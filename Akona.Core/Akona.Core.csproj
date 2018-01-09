@@ -13,8 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Common\" />
-    <Folder Include="Modules\" />
     <Folder Include="_Libraries\" />
     <Folder Include="_Extensions\" />
   </ItemGroup>
