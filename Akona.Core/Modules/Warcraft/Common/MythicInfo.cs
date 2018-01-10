@@ -5,9 +5,12 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Akona.Core.Modules.Warcraft.Common {
+    class MythicInfo {
+        private MythicInfo() { }
+    }
     class MythicAffix {
         public MythicAffixModel _model;
-        public bool _success = true;
+        public bool _success = false;
 
         public MythicAffix() {
             _model = Utilities.DeserializeJsonToString<MythicAffixModel>(Alerts.GetAlert("MYTHIC+AFFIXREQUEST"), "web");

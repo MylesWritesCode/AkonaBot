@@ -8,10 +8,16 @@ using Akona.Core.Services.Database.Models;
 
 namespace Akona.Core.Modules.Warcraft.Common {
     public class Character {
+        private int _tries;
+        private string _name;
+        private string _realm;
         public bool _success = false;
         WoWCharacterModel _character = new WoWCharacterModel();
 
-        public Character(string name, string realm) {
+        public Character(string name, string realm, int tries = 0) {
+            _name = name;
+            _realm = realm;
+            _tries = tries;
             string url = String.Format(Alerts.GetFormattedAlert("CHARURL",
                                                                 realm,
                                                                 name,
@@ -29,6 +35,7 @@ namespace Akona.Core.Modules.Warcraft.Common {
                 // Convert JSON to CharacterModel object.
                 _character = Utilities.DeserializeJsonToString<WoWCharacterModel>(stats);
                 _success = true;
+                return;
             } else {
                 Console.WriteLine("Error fetching data from Blizzard API.");
                 return;

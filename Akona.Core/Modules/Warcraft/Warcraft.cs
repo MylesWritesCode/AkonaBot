@@ -19,14 +19,17 @@ namespace Akona.Core.Modules.Warcraft
                                                        2,
                                                        StringSplitOptions.RemoveEmptyEntries);
             string name = parameters[0];
-            string realm = parameters[1];
+            string realm = WarcraftUtilities.ReviseRealmName(parameters[1]);
 
             Character toon = new Character(name, realm);
-             if (toon._success) {
+            if (toon._success) {
+                await botMessage.ModifyAsync(x => {
+                    x.Content = "Akona found this character for you!";
+                });
                 int[] classColor = toon.getClassColor();
                 var embed = new EmbedBuilder()
-                    .WithTitle(Alerts.GetFormattedAlert("TITLE", name,
-                                                                 realm,
+                    .WithTitle(Alerts.GetFormattedAlert("TITLE", toon.getName(),
+                                                                 toon.getRealm(),
                                                                  toon.getAchievementPoints()))
                     .WithThumbnailUrl(Alerts.GetFormattedAlert("THUMBNAIL", toon.getThumbnail()))
                     .WithDescription(Alerts.GetFormattedAlert("CLASS", toon.getLevel(),
@@ -34,24 +37,24 @@ namespace Akona.Core.Modules.Warcraft
                                                                        toon.getClass(),
                                                                        toon.getiLevel()))
                     .WithColor(classColor[0], classColor[1], classColor[2])
-                    .AddField("Progression", Alerts.GetFormattedAlert("Progression", toon.getENProgress(), 
+                    .AddField("Progression", Alerts.GetFormattedAlert("Progression", toon.getENProgress(),
                                                                                      toon.getToVProgress(),
                                                                                      toon.getNHProgress(),
                                                                                      toon.getToSProgress(),
                                                                                      toon.getAntorusProgress()))
                     .AddField("Artifact Traits", toon.getArtifactTraits())
-                    .AddField("Stats", Alerts.GetFormattedAlert("StatsDescriptionMain", toon.getHealth(), 
+                    .AddField("Stats", Alerts.GetFormattedAlert("StatsDescriptionMain", toon.getHealth(),
                                                                                         toon.getPower(),
-                                                                                        toon.getAgility(), 
-                                                                                        toon.getStrength(), 
+                                                                                        toon.getAgility(),
+                                                                                        toon.getStrength(),
                                                                                         toon.getIntellect()))
                     .AddField("Secondary Stats", Alerts.GetFormattedAlert("StatsDescriptionSecondary", toon.getCrit(),
                                                                                                        toon.getHaste(),
                                                                                                        toon.getMastery(),
                                                                                                        toon.getVers()))
-                    .AddInlineField( "WoWProgress:", Alerts.GetFormattedAlert("WoWProgress", realm, name))
-                    .AddInlineField(    "RaiderIO:", Alerts.GetFormattedAlert("RaiderIO", realm, name))
-                    .AddInlineField(     "WoWHead:", Alerts.GetFormattedAlert("WoWHead", realm, name))
+                    .AddInlineField("WoWProgress:", Alerts.GetFormattedAlert("WoWProgress", realm, name))
+                    .AddInlineField("RaiderIO:", Alerts.GetFormattedAlert("RaiderIO", realm, name))
+                    .AddInlineField("Armory:", Alerts.GetFormattedAlert("Armory", realm, name))
                     .AddInlineField("WarcraftLogs:", Alerts.GetFormattedAlert("WarcraftLogs", realm, name));
 
                 await Context.Channel.SendMessageAsync("", false, embed);

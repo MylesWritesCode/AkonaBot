@@ -3,6 +3,7 @@ using Discord;
 using Discord.WebSocket;
 using System.Threading.Tasks;
 using Akona.Core.Services;
+using Akona.Core.Modules.Warcraft.Common;
 
 namespace Akona.Core {
     class AkonaBot {
@@ -13,6 +14,7 @@ namespace Akona.Core {
         => new AkonaBot().StartAsync().GetAwaiter().GetResult();
 
         public async Task StartAsync() {
+
             Configuration config = new Configuration();
             if (Configuration.bot.token == "" || Configuration.bot.token == null) return;
             _client = new DiscordSocketClient(new DiscordSocketConfig {
