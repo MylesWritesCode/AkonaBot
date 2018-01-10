@@ -17,4 +17,10 @@
     <Folder Include="_Extensions\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Resources\alerts.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

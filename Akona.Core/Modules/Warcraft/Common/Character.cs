@@ -8,7 +8,7 @@ using Akona.Core.Services.Database.Models;
 
 namespace Akona.Core.Modules.Warcraft.Common {
     public class Character {
-        bool _success = false;
+        public bool _success = false;
         WoWCharacterModel _character = new WoWCharacterModel();
 
         public Character(string name, string realm) {
@@ -21,13 +21,13 @@ namespace Akona.Core.Modules.Warcraft.Common {
                 /* Need to replace the key words class and int that come in the 
                  * response from Blizzard to m_class and intellect. Otherwise it
                  * won't work. TODO: Find a more elegant solution. */
-                var replaceClassInJson = new Regex(Regex.Escape("\"class\""));
-                var replaceIntInJson = new Regex(Regex.Escape("\"int\""));
-                stats = replaceClassInJson.Replace(stats, "\"m_class\"", 1);
-                stats = replaceIntInJson.Replace(stats, "\"intellect\"", 1);
+                var replaceClassInJson = new Regex(Regex.Escape("\"class\""));  // Change "class"
+                var replaceIntInJson = new Regex(Regex.Escape("\"int\""));      // Change "int"
+                stats = replaceClassInJson.Replace(stats, "\"m_class\"", 1);    // ...to "m_class"
+                stats = replaceIntInJson.Replace(stats, "\"intellect\"", 1);    // ...to "intellect"
 
                 // Convert JSON to CharacterModel object.
-                _character = Utilities.DeserializeJsonToString<WoWCharacterModel>(stats, "local");
+                _character = Utilities.DeserializeJsonToString<WoWCharacterModel>(stats);
                 _success = true;
             } else {
                 Console.WriteLine("Error fetching data from Blizzard API.");
@@ -54,6 +54,7 @@ namespace Akona.Core.Modules.Warcraft.Common {
                 default: return "Error";
             }
         }
+
         public int[] getClassColor() {
             int[] color = { 0, 0, 0 };
             switch (_character.m_class) {

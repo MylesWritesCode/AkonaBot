@@ -33,7 +33,6 @@ namespace Akona.Core.Services {
                     Console.WriteLine(result.ErrorReason);
                 }
             }
-
         }
     }
 }

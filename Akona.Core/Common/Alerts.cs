@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace Akona.Core.Common {
     class Alerts {
         private static Dictionary<string, string> alerts;
 
         static Alerts() {
-            string path = "Resources/alerts.json";
-            var data = Utilities.DeserializeJsonToString<dynamic>(path, "local");
+            string path = "./Resources/alerts.json";
+            string json = File.ReadAllText(path);
+            var data = JsonConvert.DeserializeObject<dynamic>(json);
             alerts = data.ToObject<Dictionary<string, string>>();
         }
 

@@ -19,6 +19,11 @@ namespace Akona.Core.Common {
             return (T) Convert.ChangeType(obj, typeof(T));
         }
 
+        public static T DeserializeJsonToString<T>(string json) {
+            object obj = JsonConvert.DeserializeObject<T>(json);
+            return (T)Convert.ChangeType(obj, typeof(T));
+        }
+
         public static string SerializeObjectToJson<T>(T obj, string path) {
             string json = JsonConvert.SerializeObject(obj, Formatting.Indented);
             return json;
@@ -28,12 +33,17 @@ namespace Akona.Core.Common {
             try {
                 WebClient wc = new WebClient() { Encoding = Encoding.UTF8 };
                 using (wc) {
-                    var response = wc.DownloadData(url);
-                    return (T) Convert.ChangeType(response, typeof(T));
+                    if (typeof(T) == typeof(string)) {
+                        var response = wc.DownloadString(url);
+                        return (T)Convert.ChangeType(response, typeof(T));
+                    } else {
+                        var response = wc.DownloadData(url);
+                        return (T)Convert.ChangeType(response, typeof(T));
+                    }
                 }
             } catch (Exception e) {
                 Console.WriteLine(e.Message);
-                return (T) Convert.ChangeType("Error fetching data.", typeof(string));
+                return default(T);
             }
         }
     }
