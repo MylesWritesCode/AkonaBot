@@ -52,9 +52,9 @@ namespace Akona.Core.Modules.Warcraft
                                                                                                        toon.getHaste(),
                                                                                                        toon.getMastery(),
                                                                                                        toon.getVers()))
-                    .AddInlineField("WoWProgress:", Alerts.GetFormattedAlert("WoWProgress", realm, name))
-                    .AddInlineField("RaiderIO:", Alerts.GetFormattedAlert("RaiderIO", realm, name))
-                    .AddInlineField("Armory:", Alerts.GetFormattedAlert("Armory", realm, name))
+                    .AddInlineField("WoWProgress:" , Alerts.GetFormattedAlert("WoWProgress" , realm, name))
+                    .AddInlineField("RaiderIO:"    , Alerts.GetFormattedAlert("RaiderIO"    , realm, name))
+                    .AddInlineField("Armory:"      , Alerts.GetFormattedAlert("Armory"      , realm, name))
                     .AddInlineField("WarcraftLogs:", Alerts.GetFormattedAlert("WarcraftLogs", realm, name));
 
                 await Context.Channel.SendMessageAsync("", false, embed);

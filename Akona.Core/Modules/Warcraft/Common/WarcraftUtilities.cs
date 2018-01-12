@@ -1,10 +1,10 @@
 ﻿using Akona.Core.Common;
 using Akona.Core.Services;
 using Akona.Core.Services.Database.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Akona.Core.Modules.Warcraft.Common;
+using System;
+using System.Text;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace Akona.Core.Modules.Warcraft.Common {
@@ -13,7 +13,6 @@ namespace Akona.Core.Modules.Warcraft.Common {
         public static string ReviseRealmName(string realm) {
             realm = realm.ToLower();
             RealmData realmInfo = new RealmData();
-            // TODO: Figure out how to clean realm list.
             var realms = realmInfo._model.realms;
             List<string> listOfWords = new List<string>();
             for (int i = 0; i < realms.Length; i++) {
