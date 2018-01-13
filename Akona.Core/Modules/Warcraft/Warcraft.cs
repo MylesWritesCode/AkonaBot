@@ -8,14 +8,13 @@ using Akona.Core.Services.Database.Models;
 using Discord;
 using Discord.Commands;
 
-namespace Akona.Core.Modules.Warcraft
-{
+namespace Akona.Core.Modules.Warcraft {
     public class Warcraft : ModuleBase<SocketCommandContext> {
         [Command("lookup")]
         public async Task CharacterLookup([Remainder] string msg) {
             var botMessage = await Context.Channel.SendMessageAsync("Searching...");
 
-            string[] parameters = msg.Split(new Char[] { ',', ' ', '-' }, 
+            string[] parameters = msg.Split(new Char[] { ',', ' ', '-' },
                                                        2,
                                                        StringSplitOptions.RemoveEmptyEntries);
             string name = parameters[0];
@@ -52,9 +51,9 @@ namespace Akona.Core.Modules.Warcraft
                                                                                                        toon.getHaste(),
                                                                                                        toon.getMastery(),
                                                                                                        toon.getVers()))
-                    .AddInlineField("WoWProgress:" , Alerts.GetFormattedAlert("WoWProgress" , realm, name))
-                    .AddInlineField("RaiderIO:"    , Alerts.GetFormattedAlert("RaiderIO"    , realm, name))
-                    .AddInlineField("Armory:"      , Alerts.GetFormattedAlert("Armory"      , realm, name))
+                    .AddInlineField("WoWProgress:", Alerts.GetFormattedAlert("WoWProgress", realm, name))
+                    .AddInlineField("RaiderIO:", Alerts.GetFormattedAlert("RaiderIO", realm, name))
+                    .AddInlineField("Armory:", Alerts.GetFormattedAlert("Armory", realm, name))
                     .AddInlineField("WarcraftLogs:", Alerts.GetFormattedAlert("WarcraftLogs", realm, name));
 
                 await Context.Channel.SendMessageAsync("", false, embed);

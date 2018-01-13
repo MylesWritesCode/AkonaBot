@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 
 namespace Akona.Core.Services.Database.Models {
-        public class WoWCharacterModel {
+    public class WoWCharacterModel {
         public long lastModified { get; set; }
         public string name { get; set; }
         public string realm { get; set; }

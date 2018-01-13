@@ -28,6 +28,7 @@ namespace Akona.Core {
             _handler = new CommandHandler();
             await _handler.InitializeAsync(_client);
             await Task.Delay(-1);
+            Console.ReadLine();
         }
 
         private async Task Log(LogMessage msg) {

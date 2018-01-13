@@ -65,15 +65,15 @@ namespace Akona.Core.Modules.Warcraft.Common {
         public int[] getClassColor() {
             int[] color = { 0, 0, 0 };
             switch (_character.m_class) {
-                case 1:  color[0] = 199; color[1] = 156; color[2] = 110; return color;
-                case 2:  color[0] = 245; color[1] = 140; color[2] = 186; return color;
-                case 3:  color[0] = 171; color[1] = 212; color[2] = 115; return color;
-                case 4:  color[0] = 255; color[1] = 145; color[2] = 105; return color;
-                case 5:  color[0] = 255; color[1] = 255; color[2] = 255; return color;
-                case 6:  color[0] = 196; color[1] = 030; color[2] = 059; return color;
-                case 7:  color[0] = 000; color[1] = 112; color[2] = 222; return color;
-                case 8:  color[0] = 105; color[1] = 204; color[2] = 240; return color;
-                case 9:  color[0] = 148; color[1] = 130; color[2] = 201; return color;
+                case 1: color[0] = 199; color[1] = 156; color[2] = 110; return color;
+                case 2: color[0] = 245; color[1] = 140; color[2] = 186; return color;
+                case 3: color[0] = 171; color[1] = 212; color[2] = 115; return color;
+                case 4: color[0] = 255; color[1] = 145; color[2] = 105; return color;
+                case 5: color[0] = 255; color[1] = 255; color[2] = 255; return color;
+                case 6: color[0] = 196; color[1] = 030; color[2] = 059; return color;
+                case 7: color[0] = 000; color[1] = 112; color[2] = 222; return color;
+                case 8: color[0] = 105; color[1] = 204; color[2] = 240; return color;
+                case 9: color[0] = 148; color[1] = 130; color[2] = 201; return color;
                 case 10: color[0] = 000; color[1] = 255; color[2] = 180; return color;
                 case 11: color[0] = 255; color[1] = 125; color[2] = 010; return color;
                 case 12: color[0] = 163; color[1] = 048; color[2] = 201; return color;

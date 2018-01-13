@@ -17,7 +17,7 @@ namespace Akona.Core.Common {
                 json = FetchWebResponse<string>(path);
             }
             object obj = JsonConvert.DeserializeObject<T>(json);
-            return (T) Convert.ChangeType(obj, typeof(T));
+            return (T)Convert.ChangeType(obj, typeof(T));
         }  // End public static T DeserializeJsonToString<T>(string path, string location)
 
         public static T DeserializeJsonToString<T>(string json) {
@@ -45,7 +45,7 @@ namespace Akona.Core.Common {
             } catch (Exception e) {
                 Console.WriteLine(e.Message);
                 if (typeof(T) == typeof(string))
-                    return (T) Convert.ChangeType("Error fetching data.", typeof(T));
+                    return (T)Convert.ChangeType("Error fetching data.", typeof(T));
                 return default(T);
             }  // End try && catch
         }  // End public static T FetchWebResponse<T>(string url)

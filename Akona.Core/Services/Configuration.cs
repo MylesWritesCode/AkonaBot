@@ -3,10 +3,9 @@ using System.IO;
 using Akona.Core.Common;
 
 namespace Akona.Core.Services {
-    public class Configuration
-    {
+    public class Configuration {
         public const string configFolder = "Resources";
-        public const string configFile   = "botConfig.json";
+        public const string configFile = "botConfig.json";
 
         public static BotConfig bot;
 
