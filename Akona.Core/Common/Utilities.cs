@@ -93,7 +93,6 @@ namespace Akona.Core.Common {
     public class StringSearch {
         private string _word;
         private List<string> _listOfWords;
-        private int _countOfList;
         int _iteration = 0;
 
         public StringSearch() {
@@ -125,5 +124,5 @@ namespace Akona.Core.Common {
                 return FindClosestMatch(tempStringSearch);
             }
         }  // End public static string FindClosestMatch(StringSearch ssearch)
-    }
-}
+    }  // End public class StringSearch
+}  // End namespace Akona.Core.Common

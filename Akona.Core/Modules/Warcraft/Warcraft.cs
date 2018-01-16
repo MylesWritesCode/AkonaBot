@@ -65,7 +65,7 @@ namespace Akona.Core.Modules.Warcraft {
         }  // End public async Task CharacterLookup([Remainder] string msg)
 
         [Command("mythic-affixes")]
-        public async Task displayMythicAffixes() {
+        public async Task DisplayMythicAffixes() {
             var botMessage = await Context.Channel.SendMessageAsync("Searching...");
             MythicAffix affixes = new MythicAffix();
 
@@ -87,7 +87,7 @@ namespace Akona.Core.Modules.Warcraft {
                 await Context.Channel.SendMessageAsync("", false, embed);
             } else {
                 await botMessage.ModifyAsync(x => {
-                    x.Content = "Bulbasaur couldn't find any affixes :(";
+                    x.Content = "Akona couldn't find any affixes :(";
                 });
             }  // End if (affixes) && else
         }  // End public async Task displayMythicAffixes()
