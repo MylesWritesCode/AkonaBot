@@ -1,4 +1,4 @@
-# Bulbasaur
+# AkonaBot
 A helpful Discord bot.
 
 ### Current Commands
